@@ -3,11 +3,11 @@ const helmet = require('helmet');
 const cors = require("cors");
 const sessions = require("express-session"); // <<<<< install express-session
 const KnexSessionStore = require("connect-session-knex")(sessions); // to store sessions in database
-const knex = require("./data/db-config.js");
+const knex = require("../data/db-config");
 
 
-const user = require('./routers/user-router.js');
-const RestaurantRouter = require('./routers/restaurant-router.js')
+const user = require('../routers/user-router.js');
+const RestaurantRouter = require('../routers/restaurant-router.js')
 // const ReviewRouter = require('./reviews/reviews-router.js');
 
 const sessionConfiguration = {
