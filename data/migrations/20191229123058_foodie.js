@@ -16,14 +16,14 @@ exports.up = function(knex) {
       tbl.time('opens', {precision:6}).notNullable();
       tbl.time('closes',  {precision:6}).notNullable();
       tbl.float('rating').notNullable()
-      tbl.biniary('photos').nullable()
+      tbl.binary('photos').nullable()
     })
     .createTable('reviews', tbl => {
       tbl.increments()
       tbl.integer('restaurant_id').unsigned().notNullable().references('id').inTable('restaurants').onUpdate('CASCADE').onDelete('CASCADE')
       tbl.string('cuisine', 128).notNullable();
       tbl.string('menuItemName', 128).notNullable();
-      tbl.blob('photo').nullable()
+      tbl.binary('photo').nullable()
       tbl.decimal('price').notNullable();
       tbl.float('rating').notNullable();
       tbl.text('review').notNullable();
