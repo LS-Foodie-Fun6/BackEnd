@@ -6,14 +6,15 @@
   "dependencies": {
     "bcrypt": "^3.0.7",
     "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
     "connect-session-knex": "^1.5.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-sessions": "^1.0.6",
     "helmet": "^3.21.2",
-    "knex": "^0.20.6",
     "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.6",
+    "pg": "^7.17.0",
     "sqlite3": "^4.1.1"
   },
   "engines": {
@@ -29,8 +30,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
-    "build": "nodejs build --output public"
-
+    "build": "node build"
   },
   "repository": {
     "type": "git",
