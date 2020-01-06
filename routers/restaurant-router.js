@@ -23,8 +23,6 @@ router.get('/', (req,res)=> {
 router.post('/add', /*mdwr.restricted,*/ (req,res) => {
   const rest = req.body
   
-  console.log(req.body)
-  res.json(rest)
   model.add('restaurants', rest)
   .then(saved =>{ res.status(201).json(saved)})
   .catch(err => {
