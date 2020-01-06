@@ -45,4 +45,8 @@ server.use('/users', user);
 server.use('/restaurants', RestaurantRouter);
 // server.use('/reviews', ReviewRouter);
 
+server.get('/', (req,res) => {
+  res.send( {api: 'running like wind'})
+})
+
 module.exports = server;
