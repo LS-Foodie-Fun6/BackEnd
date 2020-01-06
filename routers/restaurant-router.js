@@ -25,12 +25,12 @@ router.post('/add', /*mdwr.restricted,*/ (req,res) => {
   
   console.log(req.body)
   res.json(rest)
-  // model.add('restaurants', rest)
-  // .then(saved =>{ res.status(201).json(saved)})
-  // .catch(err => {
-  //   res.status(500).json({message: err})
-  //   console.log(err)
-  // })
+  model.add('restaurants', rest)
+  .then(saved =>{ res.status(201).json(saved)})
+  .catch(err => {
+    res.status(500).json({message: err})
+    console.log(err)
+  })
 })
 
 //update 
