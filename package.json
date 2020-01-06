@@ -28,7 +28,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack",
+    "build": "nodejs build --output public"
+
   },
   "repository": {
     "type": "git",
