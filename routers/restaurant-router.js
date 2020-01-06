@@ -13,7 +13,10 @@ router.get('/', (req,res)=> {
 
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
-    .catch(err => {res.status(500).json(err)})
+    .catch(err => {
+      console.log(err)
+      res.status(500).json(err)
+    })
 })
 
 //create
