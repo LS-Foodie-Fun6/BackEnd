@@ -16,7 +16,7 @@ exports.up = function(knex) {
       tbl.time('opens', {precision:6}).notNullable();
       tbl.time('closes',  {precision:6}).notNullable();
       tbl.float('rating').notNullable()
-      tbl.blob('photos')
+      tbl.bonary('photos')
     })
     .createTable('reviews', tbl => {
       tbl.increments()
