@@ -1,0 +1,41 @@
+{
+  "name": "foodie-fun6-server",
+  "version": "1.0.0",
+  "description": "As an avid \"Foodie\", you eat out _alot_. So much so, in fact, that you have a hard time remembering the details from your previous visits - What did you order? How long did you have to wait to be seated? Were the waistaff friendly and helpful, or rude and dismissive? Was the \"mild\" Panang Curry _really_ mild, or did it burn the tongue out of your mouth? You could lug a notebook and take detailed notes each visit - taking your attention away from why you came in the first place (to experience the meal), or you can leverage FoodieFun and easily record and access all the important details, freeing you up to focus exclusively on the meal. FoodieFun is a feature-rich \"Foodie-Focused\" journaling app designed with the avid \"Foodie\" in mind. With FoodieFun, you can quickly find out all the details you need to make a decision on where to dine:\r * The date and time of your previous visits\r * How long it took to be seated\r * Experience with waitstaff\r * Menu Accuracy\r * Photos and/or descriptions you uploaded from previous visits\r * Ratings you posted for each previous visit, as well as an average over all visits.\r * and so much more.\r Sign up for FoodieFun today, and start focusing on what matters most to you - the actual meal experience.\r ## MVP\r ### 1. Authenticated user can create/register an account as a \"Foodie\". At a minimum, the account must have the following properties (mobile, web):\r \t* id\r \t* username\r \t* password\r \t* user's location\r \t* user's email\r ### 2. Authenticated user can add a \"Restaurant\". At a minimum, users can create, read, update and delete the object as well as the values for the following properties (mobile, web):\r \t* name\r \t* id\r \t* type of cuisine\r \t* location\r \t* hours of operation\r \t* overall rating\r \t* reviews\r \t* photos of establishment/premises\r ### 3. Authenticated user can add a \"Review\" of a specific menu item at a restaurant. At a minimum, users can create, read, update and delete the a \"Review\", as well as the values for the following properties (mobile, web):\r \t* restaurant name\r \t* id\r \t* cuisine type\r \t* menu item name\r \t* photo of menu item\r \t* price\r \t* rating of menu item\r \t* short review of menu item\r ### 4. Authenticated user can access a view containing all of their previously created restaurants and reviews, and should be able to filter by the following (mobile, web):\r \t* restaurant\r \t* price of item\r \t* type of cuisine\r \t* most recently visited\r \t* menu item rating\r \t* restaurant rating\r \t* nearby restaurants (mobile, if stretch implemented)\r ## STRETCH\r 1. Use MapKit(iOS), MapView/Google Maps SDK(Android) and/or other 3rd party API(s) of your choice to implement a feature to locate nearby restaurants so user can \"discover\" new or previously unvisited establishments in their vicinity. (mobile)\r 2. Use Yelp, or other 3rd party restaurant review API to recommend restaurants that have had an increase in rating since your last visit, or unvisited restaurants in your area to try based on others' reviews. (web/mobile)\r 3. Implement a \"social\" feature to allow a user to share their review to the social networks of your choice. (mobile, web)\r 4. Implement a location-based feature that pairs you with other FoodieFun members in the area who are looking for a +1 (or more) to join them on their next FoodieFun adventure. (mobile)",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "connect-session-knex": "^1.5.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "express-sessions": "^1.0.6",
+    "helmet": "^3.21.2",
+    "knex": "^0.20.6",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite3": "^4.1.1"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstadz/foodie-fun6-server.git"
+  },
+  "author": "Daniel Stadler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dstadz/foodie-fun6-server/issues"
+  },
+  "homepage": "https://github.com/dstadz/foodie-fun6-server#readme"
+}
