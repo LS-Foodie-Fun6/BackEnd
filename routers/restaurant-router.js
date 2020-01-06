@@ -12,7 +12,7 @@ router.get('/', (req,res)=> {
   let thing = req.baseUrl.slice(1)
 
   model.getAll(thing)
-    .then(things => {res.status(200).json(things)})
+    .then(things => {res.status(200).json({'things':things})})
     .catch(err => {
       console.log(err)
       res.status(500).json(err)
