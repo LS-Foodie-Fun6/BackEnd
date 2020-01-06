@@ -16,7 +16,7 @@ router.get('/', (req,res)=> {
 
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
-    .catch(err => {res.status(500).json({message:'it didnt work'})})
+    .catch(err => {res.status(500).json(err)})
 })
 
 router.post('/register', (req,res) => {
@@ -27,7 +27,7 @@ router.post('/register', (req,res) => {
   model.add('users', user)
   .then(saved =>{ res.status(201).json(saved)})
   .catch(err => {
-    res.status(500).json({message: 'error adding new user to database'})
+    res.status(500).json(err)
     console.log(err)
   })
 })
@@ -49,21 +49,15 @@ router.post("/login", (req, res) => {
         });
       } else {res.status(401).json({ message: "Invalid Credentials" })}
     })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err);
-    });
+    .catch(err => {res.status(500).json(err);});
 });
 
 router.post("/logout", (req, res) => {
   console.log(req.session)
   if (req.session) {
-    req.session.destroy(error => {
-      if (error) {
-        res.status(500).json({
-          message:
-            "you can checkout any time you like, but you can never leave!!!!!",
-        });
+    req.session.destroy(err => {
+      if (err) {
+        res.status(500).json(err);
       } else {
         res.status(200).json({ message: "logged out" });
       }
@@ -89,9 +83,9 @@ function signToken(user) {
 
 router.get('/all', mdwr.restricted, (req,res) => {
   model.getAll('users')
-    .then(users => {
-      res.json(users)
-    })
+    .then(users => {res.json(users)})
+    .catch(err => {res.status(500).json(err);});
+
 })
 
 module.exports = router;
