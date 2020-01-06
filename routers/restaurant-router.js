@@ -13,7 +13,7 @@ router.get('/', (req,res)=> {
 
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
-    .catch(err => {res.status(500).json({message:'it didnt work'})})
+    .catch(err => {res.status(500).json(err)})
 })
 
 //create
@@ -43,7 +43,7 @@ router.put('/:id', (req,res) => {
       if(count) res.json({update: count})
       else res.status(404).json({message: 'could not find restaurant with given id'})
     })
-    .catch(err => {res.status(500).json({message:"failed to update restaurant"})})
+    .catch(err => {res.status(500).json(err)})
 })
 
 //delete
@@ -56,7 +56,7 @@ router.delete('/:id', (req,res) => {
       if(count) res.json({delete: count})
       else res.status(404).json({message: 'could not find restaurant with given id'})
     })
-    .catch(err => {res.status(500).json({message:"failed to delete restaurant"})})
+    .catch(err => {res.status(500).json(err)})
 })
 
 
