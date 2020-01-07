@@ -4,6 +4,8 @@ const cors = require("cors");
 const sessions = require("express-session"); // <<<<< install express-session
 const KnexSessionStore = require("connect-session-knex")(sessions); // to store sessions in database
 const knex = require("../data/db-config");
+const mdwr = require('../auth/restricted-middleware')
+
 
 
 const user = require('../routers/user-router.js');
@@ -42,11 +44,11 @@ server.use(cors());
 server.use(sessions(sessionConfiguration)); 
 
 server.use('/users', user);
-server.use('/restaurants', RestaurantRouter);
-server.use('/reviews', ReviewRouter);
+server.use('/restaurants', mdwr.restricted, RestaurantRouter);
+server.use('/reviews', mdwr.restricted, ReviewRouter);
 
 server.get('/', (req,res) => {
-  res.send( {api: 'running like wind'})
+  res.send({api: 'running like wind'})
 })
 
 module.exports = server;

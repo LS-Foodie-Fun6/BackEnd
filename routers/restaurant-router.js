@@ -13,30 +13,22 @@ router.get('/', (req,res)=> {
 
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err)
-    })
+    .catch(err => {res.status(500).json(err)})
 })
 
 //create
-router.post('/add', /*mdwr.restricted,*/ (req,res) => {
+router.post('/add', (req,res) => {
   const rest = req.body
   
   model.add('restaurants', rest)
   .then(saved =>{ res.status(201).json(saved)})
-  .catch(err => {
-    res.status(500).json({message: err})
-    console.log(err)
-  })
+  .catch(err => { res.status(500).json({message: err})})
 })
 
 //update 
 router.put('/:id', (req,res) => {
   const { id } = req.params
   const changes = req.body
-  console.log(changes)
-  console.log(id, changes)
 
   model.findById('restaurants', id)
     .update(changes)
@@ -57,18 +49,21 @@ router.delete('/:id', (req,res) => {
       if(count) res.json({delete: count})
       else res.status(404).json({message: 'could not find restaurant with given id'})
     })
-    .catch(err => {res.status(500).json(err)})
+    .catch(err => res.status(500).json(err))
 })
 
 //get all reviews from specific restaurant
 router.get('/:id', (req,res) =>{
   const { id } = req.params
   model.findByRestId(id)
-  .then(list => {
-    res.json(list)
-  })
+  .then(list => {res.json(list)})
   .catch(err => {res.status(500).json(err)})
 })
+
+// //get restaurant_id from name
+// router.get('/:id', (req,res) => {
+//     model.findByRestId
+// })
 
 
 module.exports = router;

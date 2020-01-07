@@ -22,8 +22,7 @@ function findById(data, id){
 }
 
 function findBy(data, filter){
-  return db(data)
-  .where(filter)
+  return db(data).where(filter)
 }
 
 function add(data, x){
@@ -31,8 +30,6 @@ function add(data, x){
   .insert(x,'id')
   .then(ids => {
     const [id] = ids
-    console.log(ids)
-    console.log(id)
     return findById(data, id)
   })
 }

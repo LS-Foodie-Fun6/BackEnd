@@ -13,7 +13,6 @@ const router = express.Router();
 
 router.get('/', (req,res)=> {
   let thing = req.baseUrl.slice(1)
-
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
     .catch(err => {res.status(500).json(err)})
@@ -26,10 +25,7 @@ router.post('/register', (req,res) => {
 
   model.add('users', user)
   .then(saved =>{ res.status(201).json(saved)})
-  .catch(err => {
-    res.status(500).json(err)
-    console.log(err)
-  })
+  .catch(err => {res.status(500).json(err)})
 })
 
 router.post("/login", (req, res) => {
@@ -40,44 +36,26 @@ router.post("/login", (req, res) => {
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = signToken(user); 
-        console.log(req.session)
         req.session.user = user;
-
-        res.status(200).json({
-          message: `Welcome ${username}!`,
-          token,
-        });
+        res.status(200).json({token});
       } else {res.status(401).json({ message: "Invalid Credentials" })}
     })
-    .catch(err => {res.status(500).json(err);});
+    .catch(err => {res.status(500).json(err)});
 });
 
 router.post("/logout", (req, res) => {
-  console.log(req.session)
   if (req.session) {
     req.session.destroy(err => {
-      if (err) {
-        res.status(500).json(err);
-      } else {
-        res.status(200).json({ message: "logged out" });
-      }
+      if (err) {res.status(500).json(err);} 
+      else {res.status(200).json({ message: "logged out" });}
     });
-  } else {
-    res.status(200).end();
-  }
+  } else {res.status(200).end()}
 });
 
 function signToken(user) {
-  const payload = {
-    username: user.username,
-    // role: "student",
-  };
+  const payload = {username: user.username,};
   const secret = process.env.JWT_SECRET || "is it secret, is it safe?";
-
-  const options = {
-    expiresIn: "1h",
-  };
-
+  const options = {expiresIn: "1h",};
   return jwt.sign(payload, secret, options);
 }
 

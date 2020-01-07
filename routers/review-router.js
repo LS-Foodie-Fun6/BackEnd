@@ -12,10 +12,7 @@ router.get('/', (req,res)=> {
   let thing = req.baseUrl.slice(1)
   model.getAll(thing)
     .then(things => {res.status(200).json(things)})
-    .catch(err => {
-      console.log(err)
-      res.status(500).json(err)
-    })
+    .catch(err => {res.status(500).json(err)})
 })
 
 //create
@@ -23,22 +20,15 @@ router.post('/add', /*mdwr.restricted,*/ (req,res) => {
   const rest = req.body
   const { id } = req.params
 
-  console.log(rest)
-  
   model.add('reviews', rest)
   .then(saved =>{ res.status(201).json(saved)})
-  .catch(err => {
-    res.status(500).json({message: err})
-    console.log(err)
-  })
+  .catch(err => {res.status(500).json({message: err})})
 })
 
 //update 
 router.put('/:id', (req,res) => {
   const { id } = req.params
   const changes = req.body
-  console.log(changes)
-  console.log(id, changes)
 
   model.findById('reviews', id)
     .update(changes)
