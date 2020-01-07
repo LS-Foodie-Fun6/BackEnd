@@ -5,6 +5,7 @@ module.exports = {
   findBy,
   findById,
   findByName,
+  findByRestId,
   findByUsername,
   add
 }
@@ -52,4 +53,7 @@ function findByName(name){
 }
 
 ///reviews
-
+function findByRestId(restaurant_id){
+  return db('reviews')
+  .where({ restaurant_id })
+}

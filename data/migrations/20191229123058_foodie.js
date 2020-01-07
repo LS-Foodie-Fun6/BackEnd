@@ -13,8 +13,8 @@ exports.up = function(knex) {
       tbl.string('name', 128).unique().notNullable();
       tbl.string('cuisine', 128).notNullable();
       tbl.string('location', 128).notNullable();
-      tbl.time('opens', {precision:6}).notNullable();
-      tbl.time('closes',  {precision:6}).notNullable();
+      tbl.integer('opens').notNullable();
+      tbl.integer('closes').notNullable();
       tbl.float('rating').notNullable()
       tbl.binary('photos').nullable()
     })
@@ -26,7 +26,7 @@ exports.up = function(knex) {
       tbl.binary('photo').nullable()
       tbl.decimal('price').notNullable();
       tbl.float('rating').notNullable();
-      tbl.text('review').notNullable();
+      tbl.text('review').notNullable();  
 
     })
 

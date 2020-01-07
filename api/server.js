@@ -8,7 +8,7 @@ const knex = require("../data/db-config");
 
 const user = require('../routers/user-router.js');
 const RestaurantRouter = require('../routers/restaurant-router.js')
-// const ReviewRouter = require('./reviews/reviews-router.js');
+const ReviewRouter = require('../routers/review-router.js');
 
 const sessionConfiguration = {
   name: "chocolatechip", 
@@ -43,7 +43,7 @@ server.use(sessions(sessionConfiguration));
 
 server.use('/users', user);
 server.use('/restaurants', RestaurantRouter);
-// server.use('/reviews', ReviewRouter);
+server.use('/reviews', ReviewRouter);
 
 server.get('/', (req,res) => {
   res.send( {api: 'running like wind'})
