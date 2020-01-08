@@ -12,9 +12,9 @@ describe("user-router.js", function() {
     it("should return a 200 OK", function() {
       // spin up the server
       return request(server)
-        .get("/")
+        .get("/users")
         .then(res => {
-          expect(res.status).toBe(200);
+          expect(res.type).toBe(/json/i);
         });
       // make GET request to /
       // look at the http status code for the response

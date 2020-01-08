@@ -44,7 +44,7 @@ server.use(cors());
 server.use(sessions(sessionConfiguration)); 
 
 server.use('/users', user);
-server.use('/restaurants', /*mdwr.restricted, */ RestaurantRouter);
+server.use('/restaurants', mdwr.restricted, RestaurantRouter);
 server.use('/reviews', mdwr.restricted, ReviewRouter);
 
 server.get('/', (req,res) => {
