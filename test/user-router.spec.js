@@ -1,7 +1,7 @@
 const request = require("supertest");
-const server = '../api/server.js'
+const server = '../routers/user-router.js.js'
 
-describe("server.js", function() {
+describe("user-router.js", function() {
   describe("environment", function() {
     it("should set environment to testing", function() {
       expect(process.env.DB_ENV).toBe("testing");
@@ -25,14 +25,6 @@ describe("server.js", function() {
         .get("/")
         .then(res => {
           expect(res.type).toMatch(/json/i);
-        });
-    });
-
-    it("should return {api: 'running like wind'}", function() {
-      return request(server)
-        .get("/")
-        .then(res => {
-          expect(res.body.api).toBe("running like wind");
         });
     });
 
