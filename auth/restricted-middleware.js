@@ -6,9 +6,11 @@ module.exports = {
 
 const restricted = (req,res,next) => {
   console.log(req.headers.authorization)
-  (req.session && req.session.user)
-  ? next()
-  : res.status(401).json({message: 'go away, you dont belong here'})
+  if(req.session && req.session.user) next()
+  else {
+    console.log('restricted')
+    res.status(401).json({message: 'go away, you dont belong here'})
+  }
 }
 
 // function restricted(req, res, next) {
