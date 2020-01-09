@@ -12,6 +12,7 @@ function restricted (req,res,next) {
   else {
     console.log('restricted')
     res.status(401).json({message: 'go away, you dont belong here'})
+    next()
   }
 }
 
