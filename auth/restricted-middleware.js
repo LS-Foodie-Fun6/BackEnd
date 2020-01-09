@@ -11,7 +11,7 @@ function restricted (req,res,next) {
   if(req.session && req.session.user) next()
   else {
     console.log('restricted')
-    res.status(201).json({message: 'go away, you dont belong here'})
+    //res.status(201).json({message: 'go away, you dont belong here'})
     next()
   }
 }
