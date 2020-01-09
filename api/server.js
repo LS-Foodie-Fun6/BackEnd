@@ -1,9 +1,9 @@
-const express = require('express');
-const helmet = require('helmet');
-const cors = require("cors");
-const sessions = require("express-session"); // <<<<< install express-session
-const KnexSessionStore = require("connect-session-knex")(sessions); // to store sessions in database
-const knex = require("../data/db-config");
+const express = require('express')
+const helmet = require('helmet')
+const cors = require('cors')
+const sessions = require('express-session')
+const KnexSessionStore = require('connect-session-knex')
+const knex = require('../data/db-config')
 const mdwr = require('../auth/restricted-middleware')
 
 
