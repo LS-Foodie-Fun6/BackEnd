@@ -4,7 +4,7 @@ module.exports = {
   restricted, authenticate
 }
 
-const restricted = (req,res,next) => {
+function restricted (req,res,next) {
   console.log(req.headers.authorization)
   if(req.session && req.session.user) next()
   else {
@@ -23,7 +23,7 @@ const restricted = (req,res,next) => {
 //   }
 // };
 
-const authenticate = (req, res, next) => {
+function authenticate(req, res, next) {
   const {Authorization} = req.headers
   if(Authorization) {
     const secret = process.env.JWT_SECRET ||'did you do it right?'
