@@ -1,6 +1,5 @@
-const request = require("supertest");
-const server = '../routers/user-router.js.js'
-/*
+const request = require('supertest')
+const server = require('../api/server')
 describe("user-router.js", function() {
   describe("environment", function() {
     it("should set environment to testing", function() {
@@ -46,5 +45,3 @@ describe("user-router.js", function() {
     });
   });
 });
-
-*/

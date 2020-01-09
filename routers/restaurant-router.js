@@ -22,7 +22,10 @@ router.post('/add', (req,res) => {
   
   model.add('restaurants', rest)
   .then(saved =>{ res.status(201).json(saved)})
-  .catch(err => { res.status(500).json({message: err})})
+  .catch(err => { 
+    console.log(err)
+    res.status(500).json({message: err})
+  })
 })
 
 //update 

@@ -6,8 +6,8 @@ module.exports = {
 }
 
 function restricted(req, res, next) {
-  console.log(req.headers)
-  console.log(req.session)
+  console.log(req.headers.authorization)
+  //console.log(req.session)
   if (req.session && req.session.user) next();
   else {
     console.log('restricted')
